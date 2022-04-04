@@ -20,8 +20,8 @@ object MainApp {
 
     val dm = new DataManage(spark)
 
-    val ratingData = dm.readData(ratingDataPath, "\t", ratingSchema)
-    val movieData = dm.readData(moviesDataPath, "|", movieSchema)
+    val ratingData = dm.readData(ratingDataPath, "\t", ratingSchema).cache()
+    val movieData = dm.readData(moviesDataPath, "|", movieSchema).cache()
 
     val joinedData: DataFrame = dm.joinedDf(ratingData, movieData)
 
