@@ -11,6 +11,7 @@ object MainApp {
     .appName("Main Application")
     .getOrCreate()
 
+  spark.conf.set("spark.sql.shuffle.partitions", 10)
 
   def main(args: Array[String]): Unit = {
     val ratingDataPath = args(0)
